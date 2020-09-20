@@ -20,23 +20,15 @@
 {% block group_content %}
 
 <div class="col-md-8">
-	<div class="list-group">
-		{% for group in object_list %}
-		  <a class="list-group-item" href="{% url 'groups:single' slug=group.slug %}">
-			     <h3 class="title list-group-item-heading">{{ group.name }}</h3>
-			<div class="list-group-item-text container-fluid">
-				{{ group.description_html }}
-				<div class="row">
-					<div class="col-md-4">
-						<span class="badge">{{ group.members.count }}</span> member{{ group.members.count|pluralize }}
-					</div>
-					<div class="col-md-4">
-						<span class="badge">{{ group.posts.count }}</span> post{{ group.posts.count|pluralize }}
-					</div>
-				</div>
-			</div>
-		</a>
+	{% if group.posts.count == 0 %}
+	<h2>No posts in this group yet!</h2>
+
+	{% else %}
+
+		{% for post in group.posts.all %}
+			{% include "posts/_post.html" %}
 		{% endfor %}
-	</div>
+
+	{% endif %}
 </div>
 {% endblock %}

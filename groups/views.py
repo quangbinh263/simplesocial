@@ -17,7 +17,7 @@ class CreateGroup(LoginRequiredMixin,CreateView):
 
 class SingleGroup(DetailView):
     model = Group
-    template_name = 'groups/group_detail.html'
+    
 
 
 class ListGroup(ListView):
