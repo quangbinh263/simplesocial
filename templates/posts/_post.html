@@ -4,10 +4,10 @@
     <strong>{{post.user.username}}</strong>
     <h5 class="media-heading">
     <span class="username">
-      <a href="{% url 'posts:for_user' username=user.username %}">@{{ post.user.username }}</a>
+      <a href="{% url 'posts:for_user' post.user.username %}">@{{ post.user.username }}</a>
     </span>
       <time class="time">
-        <a href="{% url 'posts:single' username=user.username pk=post.pk %}"></a>
+        <a href="{% url 'posts:single' post.user.username post.pk %}"></a>
       </time>
     </h5>
     <div class="media-footer">

@@ -30,7 +30,7 @@ def signUpPage(request):
 
 
 			messages.success(request, 'Account was created for: ' + username)
-			return redirect('login')
+			return redirect('accounts:login')
 
 	context = {'form': form}
 	return render(request, 'signup.html', context)
@@ -44,7 +44,7 @@ def loginPage(request):
 
 		if user is not None:
 			login(request, user)
-			return redirect('test')
+			return redirect('accounts:test')
 		else:
 			messages.info(request, 'Username OR password is incorrect')
 
